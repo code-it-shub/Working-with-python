@@ -1,1 +1,1 @@
-AL.Degree(1)
+AL.graph_dict[5]

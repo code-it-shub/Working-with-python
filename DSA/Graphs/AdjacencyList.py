@@ -1,5 +1,5 @@
 from BFS import Graph
-
+from DFS import dfs
 class Adjacency:
     def __init__(self,edges):
         self.edges = edges
@@ -11,6 +11,7 @@ class Adjacency:
                 self.graph_dict[start].append(end)
             else:
                 self.graph_dict[start]=[end]
+                self.graph_dict[end]=[start]
 
         for start,end in edges:
             if end not in self.graph_dict:
@@ -27,7 +28,20 @@ class Adjacency:
             print(len(self.graph_dict[key]))
         else:
             print("there is no such node with this value")
+    def Matrix(self):
+        mg=[]
+        for i in range(9):
+            temp=[]
+            for j in range(9):
+                temp.append(0)
+            mg.append(temp)
 
+        for (v,u) in edges:
+            mg[v][u]=1
+            mg[u][v]=1
+        for items in mg:
+            print(items)
+        
 
 
 edges = [
@@ -40,6 +54,7 @@ edges = [
 ]
 AL=Adjacency(edges)
 AL.GraphFormation()
-
-G=Graph(AL.graph_dict)
-G.bfs(5)
+# AL.Matrix()
+dfs(AL.graph_dict,5)
+# G=Graph(AL.graph_dict)
+# G.bfs(5)
