@@ -51,6 +51,11 @@ class BinraryTree:
             self.level = self.level +1
             self.search(root.left,key)
         return ValueError
+    def Height(self,root):
+        if root is None:
+            return 0
+        else:
+            return max(self.Height(root.left),self.Height(root.right))+1
 
 
 
@@ -64,4 +69,5 @@ bt.insertion(n,3)
 bt.insertion(n,34)
 bt.insertion(n,6)
 bt.insertion(n,8)
+print(bt.Height(n))
 bt.search(n,34)
